@@ -32,27 +32,45 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label>Puesto</label>
-                    <!--<input th:field="*{category}" th:value="*{category.categoryname}" type="text" class="form-control">-->
+
                     <select  class="form-control" th:field="*{job}">
-                        <option th:each="trabajo: ${}"
-                                th:value="${tra}"
-                                th:text="${categoria.categoryname}"
-                                th:selected="${categoria.id==product.category.id}">
+                        <option th:each="trabajo: ${listaTrabajos}"
+                                th:value="${trabajo.getJob_id()}"
+                                th:text="${trabajo.job_title}"
+                                th:selected="${trabajo.getJob_id()==employee.job.getJob_id()}">
 
                         </option>
                     </select>
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Sueldo</label>
+                    <input th:field="*{salary}" type="text" class="form-control" name="salary" id="salary">
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label>Jefe</label>
+                    <select  class="form-control" th:field="*{manager}">
+                        <option th:each="jefe: ${listajefes}"
+                                th:value="${jefe.getEmployee_id()}"
+                                th:text="${jefe.first_name + ' '+ jefe.last_name}"
+                                th:selected="${employee.manager.getEmployee_id()==jefe.getEmployee_id()}">
+
+                        </option>
+                    </select>
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label>Departamento</label>
+
+                    <select  class="form-control" th:field="*{departamento}">
+                        <option th:each="dep: ${listaDepartamentos}"
+                                th:value="${dep.department_id}"
+                                th:text="${dep.getDepartment_name()}"
+                                th:selected="${employee.departamento.getDepartment_id()==jefe.getEmployee_id()}">
+
+                        </option>
+                    </select>
                 </div>
             </div>
 

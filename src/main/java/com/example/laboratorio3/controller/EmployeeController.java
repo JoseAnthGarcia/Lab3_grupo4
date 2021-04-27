@@ -1,6 +1,8 @@
 package com.example.laboratorio3.controller;
 import com.example.laboratorio3.entity.Employees;
+import com.example.laboratorio3.repository.DepartmentRepository;
 import com.example.laboratorio3.repository.EmployeesRepository;
+import com.example.laboratorio3.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +19,15 @@ public class EmployeeController {
     //COMPLETAR
     @Autowired
     EmployeesRepository employeesRepository;
+    @Autowired
+    JobRepository jobRepository;
+    @Autowired
+    DepartmentRepository departmentRepository;
 
 
     @GetMapping("/listar")
-    public String listaEmployee(){
+    public String listaEmployee(Model model){
+        model.addAttribute("listaEmployees", employeesRepository.findAll());
         return "/employee/lista";
     }
 
@@ -41,6 +48,9 @@ public class EmployeeController {
         if (optionalEmployees.isPresent()) {
             Employees employee = optionalEmployees.get();
             model.addAttribute("employee", employee);
+            model.addAttribute("listaTrabajos", jobRepository.findAll());
+            model.addAttribute("listajefes", employeesRepository.findAll());
+            model.addAttribute("listaDepartamentos", departmentRepository.findAll());
             return "employee/editFrm";
         } else {
             return "redirect:/employee/list";
