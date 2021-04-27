@@ -23,22 +23,22 @@
 
     <!-- COMPLETAR -->
     <!-- COMPLETAR -->
-    <table class="table table-sm">
+    <table class="table table-sm" align="left" >
         <thead>
         <tr>
-            <th class="text-center">
+            <th  >
                 Nombre
             </th>
-            <th class="text-center">
+            <th >
                 Apellido
             </th>
-            <th class="text-center">
+            <th >
                 Puesto
             </th>
-            <th class="text-center">
+            <th >
                 Departamento
             </th>
-            <th class="text-center">
+            <th>
                 Fecha inicio
             </th>
 
@@ -51,7 +51,7 @@
             <td th:text="${history.employees.last_name}">Otto</td>
             <td th:text="${history.job.job_title}">@mdo</td>
             <td th:text="${history.department.department_name}">Otto</td>
-            <td th:text="${history.start_date}">Otto</td>
+            <td th:text="${history.start_date.substring(0,10) }">Otto</td>
         </tr>
 
         </tbody>
