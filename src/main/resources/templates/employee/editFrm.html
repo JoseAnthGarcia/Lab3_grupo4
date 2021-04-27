@@ -12,7 +12,8 @@
     <h2>Editar Empleado</h2><hr />
         <form method="post" th:action="@{'/employee/save'}" th:object="${employee}">
             <!-- COMPLETAR -->
-            <input th:field="*{employee_id}" name="employee_id" type="hidden"/>
+            <input th:field="*{employee_id}" type="hidden"/>
+            <input th:field="*{hire_date}" type="hidden"/>
             <div class="row">
                 <div class="form-group col-6">
                     <label for="first_name">Nombres</label>
@@ -52,11 +53,19 @@
                 <div class="form-group col-6">
                     <label>Jefe</label>
                     <select  class="form-control" th:field="*{manager}">
+                        <!-- Caso en que no tiene jefe -->
+                        <option th:if="${employee.manager==null}" selected value="---">Sin jefe</option>
                         <option th:each="jefe: ${listajefes}"
                                 th:value="${jefe.getEmployee_id()}"
                                 th:text="${jefe.first_name + ' '+ jefe.last_name}"
-                                th:selected="${employee.manager.getEmployee_id()==jefe.getEmployee_id()}">
-
+                                th:if="${employee.manager==null}">
+                        </option>
+                        <!-- Caso en que sí tiene jefe -->
+                        <option th:each="jefe: ${listajefes}"
+                                th:value="${jefe.getEmployee_id()}"
+                                th:text="${jefe.first_name + ' '+ jefe.last_name}"
+                                th:selected="${employee.manager.getEmployee_id()==jefe.getEmployee_id()}"
+                                th:unless="${employee.manager==null}">
                         </option>
                     </select>
                 </div>
@@ -64,18 +73,28 @@
                     <label>Departamento</label>
 
                     <select  class="form-control" th:field="*{departament}">
+                        <!-- Caso en que no tiene departamento -->
+                        <option th:if="${employee.departament==null}" selected value="---">Sin departamento</option>
                         <option th:each="depart: ${listaDepartamentos}"
                                 th:value="${depart.department_id}"
                                 th:text="${depart.getDepartment_name()}"
-                                th:selected="${employee.departament.getDepartment_id()==depart.department_id}">
+                                th:if="${employee.departament==null}">
+                        </option>
+
+                        <!-- Caso en que sí tiene departamento -->
+                        <option th:each="depart: ${listaDepartamentos}"
+                                th:value="${depart.department_id}"
+                                th:text="${depart.getDepartment_name()}"
+                                th:selected="${employee.departament.getDepartment_id()==depart.department_id}"
+                                th:unless="${employee.departament==null}">
 
                         </option>
                     </select>
                 </div>
             </div>
 
-            <a th:href="@{'/employee'}" class="btn btn-danger">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Registrar</button>
+            <a th:href="@{'/employee/listar'}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
     </body>
 </html>
