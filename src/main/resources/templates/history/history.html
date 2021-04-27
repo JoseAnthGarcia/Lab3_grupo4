@@ -12,13 +12,12 @@
 <div class="container">
     <div th:replace="fragments/general.html :: navbar"></div>
     <h1>Historial de Empleados</h1>
-    <form class="input-group mb-lg-3" method="post" th:action="@{history/buscarHistory}">                <!-- COMPLETAR -->
-        <!-- COMPLETAR -->
+    <form class="input-group mb-lg-3" method="post" th:action="@{/history/textSearch}">                <!-- COMPLETAR -->
         <div class="input-group-append">
-            <a class="btn btn-primary mt-4 mb-4" th:href="@{/history/buscarHistory}"></a>
-            <a class="btn btn-primary mt-4 mb-4" th:href="@{/history/limpiarHistory}"></a>                 <!-- COMPLETAR -->
-            <!-- COMPLETAR -->
+            <input type="text" class="form-control" placeholder="Texto a buscar" name="textBuscador">
         </div>
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+        <a class="btn btn-outline-danger" th:href="@{/history/listar}" >Limpiar</a>
     </form>
 
     <!-- COMPLETAR -->

@@ -14,11 +14,17 @@
     <h1>Lista de Empleados</h1>
     <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/newEmployee}">Nuevo</a>                 <!-- COMPLETAR -->
     <form class="input-group mb-lg-3" method="post" th:action="@{/employee/textSearch}">                <!-- COMPLETAR -->
-        <!-- COMPLETAR -->
         <div class="input-group-append">
-            <!-- COMPLETAR -->
+            <input type="text" class="form-control" placeholder="Texto a buscar" name="textBuscador">
         </div>
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+        <a class="btn btn-outline-danger">Limpiar</a>
     </form>
+
+    <div class="alert alert-success" role="alert"
+         th:if="${msg!=null}" th:text="${msg}">
+        A simple success alert—check it out!
+    </div>
 
     <!-- COMPLETAR -->
     <!-- COMPLETAR -->
@@ -43,8 +49,15 @@
             <td th:text="${employee.first_name}">Mark</td>
             <td th:text="${employee.last_name}">Otto</td>
             <td th:text="${employee.job.job_title}">@mdo</td>
-            <td th:text="${employee.departament.department_name}">Otto</td>
-            <td th:text="${employee.departament.location.city}">Otto</td>
+            <!--Valido si no tiene departamento-->
+            <td th:if="${employee.departament==null}">Sin departamento</td>
+            <td th:if="${employee.departament==null}">--</td>
+            <!------------------------>
+            <td th:unless="${employee.departament==null}"
+                th:text="${employee.departament.department_name}">Otto</td>
+            <td th:unless="${employee.departament==null}"
+                th:text="${employee.departament.location.city}">Otto</td>
+            <!------------------------>
             <td>
                 <a class="btn btn-primary" th:href="@{'/employee/edit?id='+${employee.employee_id}}">
                     Editar

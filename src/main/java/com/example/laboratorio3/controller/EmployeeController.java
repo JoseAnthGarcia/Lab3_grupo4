@@ -33,6 +33,12 @@ public class EmployeeController {
         return "/employee/lista";
     }
 
+    @PostMapping("/textSearch")
+    public String buscardor(@RequestParam("textBuscador") String textBuscador, Model model){
+        model.addAttribute("listaEmployees", employeesRepository.buscarInputBuscador(textBuscador));
+        return "/employee/lista";
+    }
+
 
     @GetMapping("/newEmployee")
     public String nuevoEmployeeForm(Model model) {
@@ -45,12 +51,12 @@ public class EmployeeController {
     @PostMapping("/save")
     public String guardarEmployee(Employees employees, RedirectAttributes attr) {
         if (employees.getEmployee_id()== 0) {
-            attr.addFlashAttribute("msg", "Producto creado exitosamente");
+            attr.addFlashAttribute("msg", "Empleado creado exitosamente");
         } else {
-            attr.addFlashAttribute("msg", "Producto actualizado exitosamente");
+            attr.addFlashAttribute("msg", "Empleado actualizado exitosamente");
         }
         employeesRepository.save(employees);
-        return "redirect:/employee";
+        return "redirect:/employee/listar";
 
     }
 
@@ -80,9 +86,9 @@ public class EmployeeController {
 
         if (optionalEmployees.isPresent()) {
             employeesRepository.deleteById(id);
-            attr.addFlashAttribute("msg","Producto borrado exitosamente");
+            attr.addFlashAttribute("msg","Empleado borrado exitosamente");
         }
-        return "redirect:/employee";
+        return "redirect:/employee/listar";
 
     }
 

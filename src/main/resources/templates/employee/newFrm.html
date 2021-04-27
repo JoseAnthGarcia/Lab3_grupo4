@@ -11,6 +11,9 @@
 <body class="container">
     <h2>Nuevo Empleado</h2><hr />
         <form method="post" th:action="@{'/employee/save'}">                <!-- COMPLETAR -->
+            <input type="text" class="form-control"
+                   value="1987-06-17 00:00:00" hidden
+                   name="hire_date"> <!-- El lab no menciona nada de esto, lo pongo, ya que es no nullable -->
             <div class="row">
                 <div class="form-group col-6">
                     <label for="first_name">Nombres</label>
@@ -67,18 +70,17 @@
                 <div class="form-group col-6">
                     <label>Departamento</label>
 
-                    <select  class="form-control" name="department">
+                    <select  class="form-control" name="departament">
                         <option th:each="depart: ${listaDepartamentos}"
                                 th:value="${depart.department_id}"
                                 th:text="${depart.getDepartment_name()}"
                                >
-
                         </option>
                     </select>
                 </div>
             </div>
 
-            <a th:href="@{'/employee'}" class="btn btn-danger">Cancelar</a>
+            <a th:href="@{'/employee/listar'}" class="btn btn-danger">Cancelar</a>
             <button type="submit" class="btn btn-primary">Registrar</button>
             <div class="row">
                 <div class="form-group"></div>
