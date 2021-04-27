@@ -34,7 +34,7 @@ public class EmployeeController {
     }
 
 
-    @GetMapping("/new")
+    @GetMapping("/newEmployee")
     public String nuevoEmployeeForm(Model model) {
         model.addAttribute("listaTrabajos", jobRepository.findAll());
         model.addAttribute("listajefes", employeesRepository.findAll());
@@ -65,7 +65,7 @@ public class EmployeeController {
             model.addAttribute("listaTrabajos", jobRepository.findAll());
             model.addAttribute("listajefes", employeesRepository.findAll());
             model.addAttribute("listaDepartamentos", departmentRepository.findAll());
-            return "employee/editFrm";
+            return "/employee/editFrm";
         } else {
             return "redirect:/employee/list";
         }

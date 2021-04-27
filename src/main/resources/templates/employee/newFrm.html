@@ -41,7 +41,7 @@
                         <option th:each="trabajo: ${listaTrabajos}"
                                 th:value="${trabajo.getJob_id()}"
                                 th:text="${trabajo.job_title}"
-                                th:selected="${trabajo.getJob_id()==employee.job.getJob_id()}">
+                                >
 
                         </option>
                     </select>
@@ -59,7 +59,7 @@
                         <option th:each="jefe: ${listajefes}"
                                 th:value="${jefe.getEmployee_id()}"
                                 th:text="${jefe.first_name + ' '+ jefe.last_name}"
-                                th:selected="${employee.manager.getEmployee_id()==jefe.getEmployee_id()}">
+                               >
 
                         </option>
                     </select>
@@ -70,8 +70,8 @@
                     <select  class="form-control" name="department">
                         <option th:each="depart: ${listaDepartamentos}"
                                 th:value="${depart.department_id}"
-                                th:text="${dep.getDepartment_name()}"
-                                th:selected="${employee.departamento.getDepartment_id()==depart.department_id}">
+                                th:text="${depart.getDepartment_name()}"
+                               >
 
                         </option>
                     </select>

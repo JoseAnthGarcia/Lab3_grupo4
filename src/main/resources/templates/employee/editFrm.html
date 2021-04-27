@@ -66,8 +66,8 @@
                     <select  class="form-control" th:field="*{departament}">
                         <option th:each="depart: ${listaDepartamentos}"
                                 th:value="${depart.department_id}"
-                                th:text="${dep.getDepartment_name()}"
-                                th:selected="${employee.departamento.getDepartment_id()==depart.department_id}">
+                                th:text="${depart.getDepartment_name()}"
+                                th:selected="${employee.departament.getDepartment_id()==depart.department_id}">
 
                         </option>
                     </select>
