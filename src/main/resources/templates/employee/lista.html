@@ -41,8 +41,8 @@
             <td th:text="${employee.first_name}">Mark</td>
             <td th:text="${employee.last_name}">Otto</td>
             <td th:text="${employee.job.job_title}">@mdo</td>
-            <td th:text="${employee.departamento.department_name}">Otto</td>
-            <td th:text="${employee.departamento.location.city}">Otto</td>
+            <td th:text="${employee.departament.department_name}">Otto</td>
+            <td th:text="${employee.departament.location.city}">Otto</td>
             <td>
                 <a class="btn btn-primary" th:ref="@{'/employee/edit?id'+${employee.employee_id}}">
                     Editar
