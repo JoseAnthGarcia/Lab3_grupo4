@@ -49,8 +49,15 @@
             <td th:text="${employee.first_name}">Mark</td>
             <td th:text="${employee.last_name}">Otto</td>
             <td th:text="${employee.job.job_title}">@mdo</td>
-            <td th:text="${employee.departament.department_name}">Otto</td>
-            <td th:text="${employee.departament.location.city}">Otto</td>
+            <!--Valido si no tiene departamento-->
+            <td th:if="${employee.departament==null}">Sin departamento</td>
+            <td th:if="${employee.departament==null}">--</td>
+            <!------------------------>
+            <td th:unless="${employee.departament==null}"
+                th:text="${employee.departament.department_name}">Otto</td>
+            <td th:unless="${employee.departament==null}"
+                th:text="${employee.departament.location.city}">Otto</td>
+            <!------------------------>
             <td>
                 <a class="btn btn-primary" th:href="@{'/employee/edit?id='+${employee.employee_id}}">
                     Editar

@@ -70,12 +70,11 @@
                 <div class="form-group col-6">
                     <label>Departamento</label>
 
-                    <select  class="form-control" name="department">
+                    <select  class="form-control" name="departament">
                         <option th:each="depart: ${listaDepartamentos}"
                                 th:value="${depart.department_id}"
                                 th:text="${depart.getDepartment_name()}"
                                >
-
                         </option>
                     </select>
                 </div>
