@@ -44,12 +44,12 @@
             <td th:text="${employee.departament.department_name}">Otto</td>
             <td th:text="${employee.departament.location.city}">Otto</td>
             <td>
-                <a class="btn btn-primary" th:ref="@{'/employee/edit?id'+${employee.employee_id}}">
+                <a class="btn btn-primary" th:href="@{'/employee/edit?id='+${employee.employee_id}}">
                     Editar
                 </a>
             </td>
             <td>
-                <a class="btn btn-danger" th:ref="@{'/employee/delete?id'+${employee.employee_id}}">
+                <a class="btn btn-danger" th:href="@{'/employee/delete?id='+${employee.employee_id}}">
                     Borrar
                 </a>
             </td>
