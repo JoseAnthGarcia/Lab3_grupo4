@@ -16,7 +16,6 @@ public class History {
     @JoinColumn(name = "employee_id", nullable = false)
     private Employees employees;
 
-    @Id
     @Column(nullable = false)
     private String start_date;
 
