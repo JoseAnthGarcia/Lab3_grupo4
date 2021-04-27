@@ -10,25 +10,37 @@
 </head>
 <body class="container">
     <h2>Editar Empleado</h2><hr />
-        <form method="post" th:action="@{}">
+        <form method="post" th:action="@{'/employee/save'}" th:object="${employee}">
             <!-- COMPLETAR -->
-
+            <input th:field="*{employee_id}" name="employee_id" type="hidden"/>
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Nombres</label>
+                    <input th:field="*{first_name}" type="text" class="form-control" name="first_name" id="first_name">
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Apellidos</label>
+                    <input th:field="*{last_name}" type="text" class="form-control" name="last_name" id="last_name">
                 </div>
             </div>
 
             <div class="form-group">
-                <!-- COMPLETAR -->
+                <label for="first_name">Correo electrónico</label>
+                <input th:field="*{email}" type="text" class="form-control" name="email" id="email">
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label>Puesto</label>
+                    <!--<input th:field="*{category}" th:value="*{category.categoryname}" type="text" class="form-control">-->
+                    <select  class="form-control" th:field="*{job}">
+                        <option th:each="trabajo: ${}"
+                                th:value="${tra}"
+                                th:text="${categoria.categoryname}"
+                                th:selected="${categoria.id==product.category.id}">
+
+                        </option>
+                    </select>
                 </div>
                 <div class="form-group col-6">
                     <!-- COMPLETAR -->
