@@ -12,8 +12,8 @@
 <div class="container">
     <div th:replace="fragments/general.html :: navbar"></div>
     <h1>Lista de Empleados</h1>
-    <a class="btn btn-primary mt-4 mb-4" th:href="@{}"></a>                 <!-- COMPLETAR -->
-    <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
+    <a class="btn btn-primary mt-4 mb-4" th:href="@{/employee/newEmployee}">Nuevo</a>                 <!-- COMPLETAR -->
+    <form class="input-group mb-lg-3" method="post" th:action="@{/employee/textSearch}">                <!-- COMPLETAR -->
         <!-- COMPLETAR -->
         <div class="input-group-append">
             <!-- COMPLETAR -->
@@ -22,7 +22,7 @@
 
     <!-- COMPLETAR -->
     <!-- COMPLETAR -->
-    <table class="table table-sm" th:if="${}">
+    <table class="table table-sm">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -42,7 +42,17 @@
             <td th:text="${employee.last_name}">Otto</td>
             <td th:text="${employee.job.job_title}">@mdo</td>
             <td th:text="${employee.departamento.department_name}">Otto</td>
-            <td th:text="${employee.}">Otto</td>
+            <td th:text="${employee.departamento.location.city}">Otto</td>
+            <td>
+                <a class="btn btn-primary" th:ref="@{'/employee/edit?id'+${employee.employee_id}}">
+                    Editar
+                </a>
+            </td>
+            <td>
+                <a class="btn btn-danger" th:ref="@{'/employee/delete?id'+${employee.employee_id}}">
+                    Borrar
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

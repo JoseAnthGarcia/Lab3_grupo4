@@ -21,17 +21,16 @@ public class Employees {
     private String phone_number;
     @Column(nullable = false)
     private String hire_date;
-    @Column(nullable = false)
     @ManyToOne
-    @JoinColumn(name = "job_id")
+    @JoinColumn(name = "job_id", nullable = false)
     private Job job;
     private BigDecimal salary;
     private  BigDecimal commission_pct;
     @ManyToOne
-    @Column(name = "manager_id")
+    @JoinColumn(name = "manager_id")
     private Employees manager;
     @ManyToOne
-    @Column(name="department_id")
+    @JoinColumn(name="department_id")
     private Department departamento;
     private int enabled;
 
