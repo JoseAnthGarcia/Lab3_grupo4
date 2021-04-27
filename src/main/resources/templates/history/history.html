@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <div th:replace="fragments/general.html :: navbar"></div>
-    <h1>Lista de Empleados</h1>
+    <h1>Historial de Empleados</h1>
     <a class="btn btn-primary mt-4 mb-4" th:href="@{}"></a>                 <!-- COMPLETAR -->
     <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
         <!-- COMPLETAR -->
@@ -25,11 +25,30 @@
     <table class="table table-sm" th:if="${}">
         <thead>
         <tr>
-            <!-- COMPLETAR -->
+            <th class="text-center">
+                Nombre
+            </th>
+            <th class="text-center">
+                Apellido
+            </th>
+            <th class="text-center">
+                Puesto
+            </th>
+            <th class="text-center">
+                Departamento
+            </th>
+            <th class="text-center">
+                Fecha inicio
+            </th>
+
         </tr>
         </thead>
         <tbody>
-        <!-- COMPLETAR -->
+
+        <td class="text-center">
+
+        </td>
+
         </tbody>
     </table>
 </div>
