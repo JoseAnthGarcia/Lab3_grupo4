@@ -33,6 +33,12 @@ public class EmployeeController {
         return "/employee/lista";
     }
 
+    @PostMapping("/textSearch")
+    public String buscardor(@RequestParam("textBuscador") String textBuscador, Model model){
+        model.addAttribute("listaEmployees", employeesRepository.buscarInputBuscador(textBuscador));
+        return "/employee/lista";
+    }
+
 
     @GetMapping("/newEmployee")
     public String nuevoEmployeeForm(Model model) {
