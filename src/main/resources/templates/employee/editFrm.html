@@ -34,8 +34,8 @@
                     <label>Puesto</label>
                     <!--<input th:field="*{category}" th:value="*{category.categoryname}" type="text" class="form-control">-->
                     <select  class="form-control" th:field="*{job}">
-                        <option th:each="trabajo: ${listaTrabajos}"
-                                th:value="${trabajo.}"
+                        <option th:each="trabajo: ${}"
+                                th:value="${tra}"
                                 th:text="${categoria.categoryname}"
                                 th:selected="${categoria.id==product.category.id}">
 
