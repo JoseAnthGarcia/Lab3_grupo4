@@ -1,12 +1,17 @@
 package com.example.laboratorio3.controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-//COMPLETAR
+@Controller
+@RequestMapping("/employee")
 public class EmployeeController {
 
     //COMPLETAR
 
-    public String listaEmployee(   ){
-        //COMPLETAR
+    @GetMapping("/listar")
+    public String listaEmployee(){
+        return "/employee/lista";
     }
 
     public String nuevoEmployeeForm( ) {
