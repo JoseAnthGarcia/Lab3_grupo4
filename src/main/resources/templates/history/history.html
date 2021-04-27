@@ -12,17 +12,18 @@
 <div class="container">
     <div th:replace="fragments/general.html :: navbar"></div>
     <h1>Historial de Empleados</h1>
-    <a class="btn btn-primary mt-4 mb-4" th:href="@{}"></a>                 <!-- COMPLETAR -->
-    <form class="input-group mb-lg-3" method="post" th:action="@{}">                <!-- COMPLETAR -->
+    <form class="input-group mb-lg-3" method="post" th:action="@{history/buscarHistory}">                <!-- COMPLETAR -->
         <!-- COMPLETAR -->
         <div class="input-group-append">
+            <a class="btn btn-primary mt-4 mb-4" th:href="@{/history/buscarHistory}"></a>
+            <a class="btn btn-primary mt-4 mb-4" th:href="@{/history/limpiarHistory}"></a>                 <!-- COMPLETAR -->
             <!-- COMPLETAR -->
         </div>
     </form>
 
     <!-- COMPLETAR -->
     <!-- COMPLETAR -->
-    <table class="table table-sm" th:if="${}">
+    <table class="table table-sm">
         <thead>
         <tr>
             <th class="text-center">
@@ -45,9 +46,13 @@
         </thead>
         <tbody>
 
-        <td class="text-center">
-
-        </td>
+        <tr th:each="history, v : ${listaHistory}">
+            <td th:text="${history.employees.first_name}">Mark</td>
+            <td th:text="${history.employees.last_name}">Otto</td>
+            <td th:text="${history.job.job_title}">@mdo</td>
+            <td th:text="${history.department.department_name}">Otto</td>
+            <td th:text="${history.start_date}">Otto</td>
+        </tr>
 
         </tbody>
     </table>
