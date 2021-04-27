@@ -33,11 +33,13 @@ public class EmployeeController {
 
     public String nuevoEmployeeForm( ) {
         //COMPLETAR
+        return "hola";
     }
 
 
     public String guardarEmployee() {
         //COMPLETAR
+        return "hola";
     }
 
 
@@ -61,6 +63,7 @@ public class EmployeeController {
     public String borrarEmpleado() {
 
        //COMPLETAR
+        return "hola";
 
     }
 

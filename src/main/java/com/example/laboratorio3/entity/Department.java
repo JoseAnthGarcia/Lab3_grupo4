@@ -1,9 +1,6 @@
 package com.example.laboratorio3.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="departments")
@@ -14,7 +11,9 @@ public class Department {
     @Column(nullable = false)
     private String department_name;
     private int manager_id;
-    private int location;
+    @ManyToOne
+    @JoinColumn(name="location_id")
+    private Location location;
 
     public int getDepartment_id() {
         return department_id;
@@ -40,12 +39,11 @@ public class Department {
         this.manager_id = manager_id;
     }
 
-    public int getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation(int location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
-
 }
