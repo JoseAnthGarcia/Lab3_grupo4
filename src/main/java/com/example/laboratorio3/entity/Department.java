@@ -10,7 +10,7 @@ public class Department {
     private int department_id;
     @Column(nullable = false)
     private String department_name;
-    private int manager_id;
+    private Integer manager_id;
     @ManyToOne
     @JoinColumn(name="location_id")
     private Location location;

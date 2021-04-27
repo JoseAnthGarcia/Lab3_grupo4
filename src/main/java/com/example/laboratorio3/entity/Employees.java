@@ -31,7 +31,7 @@ public class Employees {
     private Employees manager;
     @ManyToOne
     @JoinColumn(name="department_id")
-    private Department departamento;
+    private Department departament;
     private int enabled;
 
     public int getEmployee_id() {
@@ -122,12 +122,12 @@ public class Employees {
         this.manager = manager;
     }
 
-    public Department getDepartamento() {
-        return departamento;
+    public Department getDepartament() {
+        return departament;
     }
 
-    public void setDepartamento(Department departamento) {
-        this.departamento = departamento;
+    public void setDepartament(Department departament) {
+        this.departament = departament;
     }
 
     public int getEnabled() {

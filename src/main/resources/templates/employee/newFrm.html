@@ -10,45 +10,76 @@
 </head>
 <body class="container">
     <h2>Nuevo Empleado</h2><hr />
-        <form method="post" th:action="@{}">                <!-- COMPLETAR -->
+        <form method="post" th:action="@{'/employee/save'}">                <!-- COMPLETAR -->
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Nombres</label>
+                    <input type="text" class="form-control" name="first_name" id="first_name">
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Apellidos</label>
+                    <input type="text" class="form-control" name="last_name" id="last_name">
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Correo electrónico</label>
+                    <input  type="text" class="form-control" name="email" id="email">
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Contraseña</label>
+                    <input  type="text" class="form-control" name="password" id="password">
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label>Puesto</label>
+
+                    <select  class="form-control" name="job">
+                        <option th:each="trabajo: ${listaTrabajos}"
+                                th:value="${trabajo.getJob_id()}"
+                                th:text="${trabajo.job_title}"
+                                >
+
+                        </option>
+                    </select>
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label for="first_name">Sueldo</label>
+                    <input  type="text" class="form-control" name="salary" id="salary">
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label>Jefe</label>
+                    <select  class="form-control" name="manager">
+                        <option th:each="jefe: ${listajefes}"
+                                th:value="${jefe.getEmployee_id()}"
+                                th:text="${jefe.first_name + ' '+ jefe.last_name}"
+                               >
+
+                        </option>
+                    </select>
                 </div>
                 <div class="form-group col-6">
-                    <!-- COMPLETAR -->
+                    <label>Departamento</label>
+
+                    <select  class="form-control" name="department">
+                        <option th:each="depart: ${listaDepartamentos}"
+                                th:value="${depart.department_id}"
+                                th:text="${depart.getDepartment_name()}"
+                               >
+
+                        </option>
+                    </select>
                 </div>
             </div>
 
-            <a th:href="@{}" class="btn btn-danger"></a>                 <!-- COMPLETAR -->
-            <button type="submit" class="btn btn-primary"></button>                <!-- COMPLETAR -->
+            <a th:href="@{'/employee'}" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Registrar</button>
             <div class="row">
                 <div class="form-group"></div>
             </div>
