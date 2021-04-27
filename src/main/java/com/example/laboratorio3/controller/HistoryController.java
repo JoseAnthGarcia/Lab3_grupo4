@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/history")
@@ -30,6 +32,10 @@ public class HistoryController {
         return "/history/history";
     }
 
-
+    @PostMapping("/textSearch")
+    public String buscardor(@RequestParam("textBuscador") String textBuscador, Model model){
+        model.addAttribute("listaHistory", historyRepository.buscarInputBuscador(textBuscador));
+        return "/history/history";
+    }
 
 }
