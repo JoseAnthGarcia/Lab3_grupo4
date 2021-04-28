@@ -18,7 +18,7 @@ public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
             "from employees e\n" +
             "inner join job_history jh on e.employee_id = jh.employee_id\n" +
             "inner join jobs j on e.job_id = j.job_id\n" +
-            "where e.salary>1500", nativeQuery = true)
+            "where e.salary>15000", nativeQuery = true)
     List<EmpleadosSalarioMayor> obtenerEmpleadoSalario();
 
     @Query(value = "select e.* from employees e\n" +

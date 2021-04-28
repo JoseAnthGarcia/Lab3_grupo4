@@ -11,12 +11,10 @@ import java.util.List;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
-    @Query(value = "SELECT c.country_name as pais, l.city as ciudad ,  count(e.department_id) AS `Departamentos`\n" +
-            "FROM countries c\n" +
-            "INNER JOIN locations l ON (l.country_id = c.country_id)\n" +
-            "INNER JOIN departments d ON (d.location_id = l.location_id)\n" +
-            "INNER JOIN employees e ON (e.department_id = d.department_id)\n" +
-            "GROUP BY l.city\n" +
-            "HAVING count(e.employee_id) > 3", nativeQuery = true)
+    @Query(value = "select c.country_name as `pais`, l.city as `ciudad`, count(d.department_id) as `cantidad`from departments d\n" +
+            "left join locations l on d.location_id = l.location_id\n" +
+            "left join countries c on l.country_id = c.country_id\n" +
+            "where d.department_id in (select department_id from employees group by department_id\n" +
+            "having count(employee_id)>3) group by l.city", nativeQuery = true)
     List<DepartamentoPaisCiudad> obtenerCantidadDepartamentos();
 }
