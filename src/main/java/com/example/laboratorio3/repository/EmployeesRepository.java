@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
 
-    @Query(value = "select first_name , e.last_name, jh.start_date, jh.end_date, j.job_title , e.salary\n" +
+    @Query(value = "select first_name as firstname, e.last_name as lastname, jh.start_date as startdate, jh.end_date as enddate, j.job_title as jobtitle \n" +
             "from employees e\n" +
             "inner join job_history jh on e.employee_id = jh.employee_id\n" +
             "inner join jobs j on e.job_id = j.job_id\n" +
