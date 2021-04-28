@@ -36,6 +36,7 @@ public class EmployeeController {
     @PostMapping("/textSearch")
     public String buscardor(@RequestParam("textBuscador") String textBuscador, Model model){
         model.addAttribute("listaEmployees", employeesRepository.buscarInputBuscador(textBuscador));
+        model.addAttribute("texto", textBuscador);
         return "/employee/lista";
     }
 

@@ -35,6 +35,7 @@ public class HistoryController {
     @PostMapping("/textSearch")
     public String buscardor(@RequestParam("textBuscador") String textBuscador, Model model){
         model.addAttribute("listaHistory", historyRepository.buscarInputBuscador(textBuscador));
+        model.addAttribute("texto", textBuscador);
         return "/history/history";
     }
 
