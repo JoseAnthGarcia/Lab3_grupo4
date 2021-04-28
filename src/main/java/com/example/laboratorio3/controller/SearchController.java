@@ -1,5 +1,6 @@
 package com.example.laboratorio3.controller;
 
+import com.example.laboratorio3.repository.DepartmentRepository;
 import com.example.laboratorio3.repository.EmployeesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ public class SearchController {
 
     @Autowired
     EmployeesRepository employeesRepository;
+    @Autowired
+    DepartmentRepository departmentRepository;
 
     @GetMapping(value = {"","/"})
     public String indice(){
@@ -23,6 +26,11 @@ public class SearchController {
     public String salarioMayor15000(Model model){
         model.addAttribute("listaEmployee15000", employeesRepository.obtenerEmpleadoSalario());
         return "/Search/salarioMayor15000";
+    }
+    @GetMapping("/departamentoPaisCiudad")
+    public String departamentoPaisCiudad(Model model){
+        model.addAttribute("listaDepartamentos", departmentRepository.obtenerCantidadDepartamentos());
+        return "/Search/departamentos";
     }
 
     @GetMapping("/gerentesConExperiencia")
