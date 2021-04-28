@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("/Search")
+@Controller
+@RequestMapping("/Search")
 public class SearchController {
 
     @Autowired
@@ -17,7 +19,7 @@ public class SearchController {
 
     @GetMapping(value = {"","/"})
     public String indice(){
-        return "Search/indice";
+        return "/Search/indice";
     }
 
     @GetMapping("/salarioMayor15000")
@@ -34,6 +36,12 @@ public class SearchController {
     public String gerentesExperiencia(Model model){
         model.addAttribute("listaGerentes", employeesRepository.obtenerGerentes());
         return "/Search/salarioMayor15000";
+    }
+
+    @GetMapping("/gerentesConExperiencia")
+    public String gerentesConExperiencia(Model model){
+        model.addAttribute("listaGerentesExperiencia", employeesRepository.obtenerGerentes());
+        return "/Search/gerentesConExperiencia";
     }
 
 
