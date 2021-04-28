@@ -1,5 +1,6 @@
 package com.example.laboratorio3.repository;
 
+import com.example.laboratorio3.dto.DepartamentoPaisCiudad;
 import com.example.laboratorio3.dto.EmpleadosSalarioMayor;
 import com.example.laboratorio3.entity.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,5 +18,5 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
             "INNER JOIN employees e ON (e.department_id = d.department_id)\n" +
             "GROUP BY l.city\n" +
             "HAVING count(e.employee_id) > 3", nativeQuery = true)
-    List<EmpleadosSalarioMayor> obtenerCantidadDepartamentos();
+    List<DepartamentoPaisCiudad> obtenerCantidadDepartamentos();
 }

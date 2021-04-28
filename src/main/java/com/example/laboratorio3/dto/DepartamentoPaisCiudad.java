@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface DepartamentoPaisCiudad {
-    String getPis();
+    String getPais();
     String getCiudad();
     String getDepartamentos();
 }

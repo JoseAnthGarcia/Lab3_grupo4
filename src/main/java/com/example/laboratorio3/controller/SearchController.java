@@ -30,12 +30,7 @@ public class SearchController {
     @GetMapping("/departamentoPaisCiudad")
     public String departamentoPaisCiudad(Model model){
         model.addAttribute("listaDepartamentos", departmentRepository.obtenerCantidadDepartamentos());
-        return "/Search/salarioMayor15000";
-    }
-    @GetMapping("/gerentesConExperiencia")
-    public String gerentesExperiencia(Model model){
-        model.addAttribute("listaGerentes", employeesRepository.obtenerGerentes());
-        return "/Search/salarioMayor15000";
+        return "/Search/departamentos";
     }
 
     @GetMapping("/gerentesConExperiencia")
